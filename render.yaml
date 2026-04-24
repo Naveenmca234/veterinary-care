@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: veterinary-care
+    runtime: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn hospitalmanagement.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.8.18
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*"
